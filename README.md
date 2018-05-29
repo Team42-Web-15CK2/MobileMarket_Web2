@@ -31,6 +31,7 @@
 	
 - B3: chạy lệnh sau để tạo các table cho database
 
+		node_modeles/.bin/sequelize init
 		sequelize db:migrate 
 		
 - B4: insert dữ liệu
