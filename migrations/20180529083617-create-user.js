@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       email: {
         type: Sequelize.STRING
@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       address: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       account: {
         type: Sequelize.STRING
@@ -28,7 +28,7 @@ module.exports = {
       },
       isAdmin: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        values: 0
       },
       createdAt: {
         allowNull: false,

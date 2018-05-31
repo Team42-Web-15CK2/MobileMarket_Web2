@@ -2,16 +2,46 @@
 var catalog = require('../models/catalog');
 var brand = require('../models/brand');
 
-module.exports = (sequelize, DataTypes) => {
-  var product = sequelize.define('product', {
-    id_catalog: DataTypes.INTEGER,
-    id_brand: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    image_url: DataTypes.STRING,
-    description: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    sold_quantity: DataTypes.INTEGER,
-    remaining_quantity: DataTypes.INTEGER
+module.exports = (DataTypes, DataTypes) => {
+  var product = DataTypes.define('product', {
+     id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
+      id_catalog: {
+        type: DataTypes.INTEGER,
+      },
+      id_brand: {
+        type: DataTypes.INTEGER,
+      },
+      name: {
+        type: DataTypes.TEXT
+      },
+      image_url: {
+        type: DataTypes.STRING
+      },
+      description: {
+        type: DataTypes.TEXT
+      },
+      price: {
+        type: DataTypes.INTEGER
+      },
+      sold_quantity: {
+        type: DataTypes.INTEGER
+      },
+      remaining_quantity: {
+        type: DataTypes.INTEGER
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      }
   }, {});
   product.associate = function(models) {
     // associations can be defined here
