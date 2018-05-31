@@ -1,6 +1,6 @@
 'use strict';
-module.exports = (DataTypes, DataTypes) => {
-  var order = DataTypes.define('order', {
+module.exports = (sequelize, DataTypes) => {
+  var order = sequelize.define('order', {
      id: {
         allowNull: false,
         autoIncrement: true,

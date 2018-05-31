@@ -1,6 +1,6 @@
 'use strict';
-module.exports = (DataTypes, DataTypes) => {
-  var user = DataTypes.define('user', {
+module.exports = (sequelize, DataTypes) => {
+  var user = sequelize.define('user', {
      id: {
         allowNull: false,
         autoIncrement: true,

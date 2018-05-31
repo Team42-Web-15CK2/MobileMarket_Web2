@@ -2,8 +2,8 @@
 var catalog = require('../models/catalog');
 var brand = require('../models/brand');
 
-module.exports = (DataTypes, DataTypes) => {
-  var product = DataTypes.define('product', {
+module.exports = (sequelize, DataTypes) => {
+  var product = sequelize.define('product', {
      id: {
         allowNull: false,
         autoIncrement: true,

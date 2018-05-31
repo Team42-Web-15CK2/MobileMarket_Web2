@@ -1,6 +1,6 @@
 'use strict';
-module.exports = (DataTypes, DataTypes) => {
-  var catalog = DataTypes.define('catalog', {
+module.exports = (sequelize, DataTypes) => {
+  var catalog = sequelize.define('catalog', {
     id: {
         allowNull: false,
         autoIncrement: true,
