@@ -1,6 +1,5 @@
 'use strict';
-var catalog = require('../models/catalog');
-var brand = require('../models/brand');
+var sequelize = require('../database/mySQlConnector')
 
 module.exports = (sequelize, DataTypes) => {
   var product = sequelize.define('product', {
@@ -45,10 +44,19 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   product.associate = function(models) {
     // associations can be defined here
-    // foreign key from id_catalog to id in catalog
-    models.product.belongsTo(catalog, {foreignKey:'fk_id_catalog', targetKey:'id'});
-    // foreign key from id_brand to id in brand
-    models.product.belongsTo(brand, {foreignKey:'fk_id_brand', targetKey:'id'});
+    models.product.belongsTo(models.catalog, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    models.product.belongsTo(models.brand, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    models.product.hasMany(models.comment);
   };
   return product;
 };

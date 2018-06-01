@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   order.associate = function(models) {
     // associations can be defined here
+    models.order.hasMany(models.orderdetail);
   };
   return order;
 };

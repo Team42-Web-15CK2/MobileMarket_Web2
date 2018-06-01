@@ -36,6 +36,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   orderdetail.associate = function(models) {
     // associations can be defined here
+    models.orderdetail.hasMany(models.product);
+    models.orderdetail.belongsTo(models.order, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return orderdetail;
 };
