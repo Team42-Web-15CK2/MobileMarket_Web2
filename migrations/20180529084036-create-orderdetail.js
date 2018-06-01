@@ -10,6 +10,7 @@ module.exports = {
       },
       id_order: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'orders',
           key: 'id'
@@ -17,22 +18,27 @@ module.exports = {
       },
       id_product: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'products',
           key: 'id'
         }
       },
       name_product: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       price_product: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       quantity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       total: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

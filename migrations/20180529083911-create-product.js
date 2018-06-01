@@ -10,6 +10,7 @@ module.exports = {
       },
       id_catalog: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'catalogs',
           key: 'id'
@@ -17,19 +18,20 @@ module.exports = {
       },
       id_brand: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'brands',
           key: 'id'
         }
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       image_url: {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       price: {
         type: Sequelize.INTEGER

@@ -1,9 +1,30 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var comment = sequelize.define('comment', {
-    id_user: DataTypes.INTEGER,
-    id_product: DataTypes.INTEGER,
-    content: DataTypes.STRING
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
+      id_user: {
+        type: DataTypes.INTEGER,
+      },
+      id_product: {
+        type: DataTypes.INTEGER,
+      },
+      content: {
+        type: DataTypes.TEXT,
+        required: true
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      }
   }, {});
   comment.associate = function(models) {
     // associations can be defined here
