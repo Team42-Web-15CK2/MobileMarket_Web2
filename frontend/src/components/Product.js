@@ -41,7 +41,7 @@ class Product extends Component{
             quickViewProdcut: {
                 image: image,
                 name: name,
-                price: price,
+                price: this.formatPrice(price),
                 id: id
             }
         }, function(){

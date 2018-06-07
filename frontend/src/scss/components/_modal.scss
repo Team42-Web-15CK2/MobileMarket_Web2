@@ -49,8 +49,8 @@
         font-weight: bold;
         font-size: 24px;
         float: right;
-        &:before{
-            content: "₹ ";
+        &:after{
+            content: " vnd";
         }
     }
 }

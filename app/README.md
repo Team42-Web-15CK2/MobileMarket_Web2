@@ -7,11 +7,23 @@
 
 *******************************************************************************************************************************
 -------------------------------------------------------------------------------------------------------------------------------
+Key:
+
+	- react 
+	- express
+	- mysql 
+	- webpack
+	- sequelize
 
 
 ### 1. Cài dependence
 
-	npm install
+	1.1: 
+		cd frontend
+		npm install
+	1.2:
+		cd app
+		npm install
 
 
 -------------------------------------------------------------------------------------------------------------------------------
@@ -31,28 +43,24 @@
 
 - B3: chạy lệnh sau để tạo các table cho database
 
-		node_modeles/.bin/sequelize init
 		sequelize db:migrate
 
-- B4: insert dữ liệu
+- B4: run db:seeds
 
-		Import file database.sql trong folder database
-	hoặc
-
-		* Copy nội dung file database.sql trong folder database
-		* Dán vào ô nhập của mục SQL trong database
-		* Nhấn `GO`
+		sequelize db:seed:all
+	
 
 ------------------------------------------------------------------------------------------------------------------------------
-### 3. Run Server: Port 3000
+### 3. run wepack in frontend 
 
-	npm run dev
+	cd frontend
+	./node_modules/.bind/webpack -p
 
 ------------------------------------------------------------------------------------------------------------------------------
-### 4. Run client: client chạy ở port 3000 và được proxy sang port 3001
+### 4. run app
 
-	cd view
-	npm run start
+	cd app
+	npm start
 
 
 ----------------------------------------------------------------------------------------------------------------
