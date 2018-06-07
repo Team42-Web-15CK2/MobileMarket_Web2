@@ -18,8 +18,8 @@
 
 ### 2. Cài đặt database
 
-- B1: tạo database "mobile_market_web2" với collation utf8_unicode_ci
-- B2: chỉnh username, password trong /config/config.json  
+- B1: tạo database "mobile_market_web2" với collation utf8_unicode_ci.
+- B2: chỉnh username, password trong /config/config.json.  
 
 		"development": {
 				"username": "root",
