@@ -4,6 +4,12 @@ import Counter from './Counter';
 import EmptyCart from '../empty-states/EmptyCart';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import {findDOMNode} from 'react-dom';
+import { BrowserRouter as Router,
+    Route,
+    Link,
+    Redirect,
+    withRouter
+  } from "react-router-dom";
 
 class Header extends Component{
     constructor(props){
@@ -84,15 +90,14 @@ class Header extends Component{
             <header>
                 <div className="container">
                     <div className="brand">
-                        <img className="logo" src="https://res.cloudinary.com/sivadass/image/upload/v1493547373/dummy-logo/Veggy.png" alt="Veggy Brand Logo"/>
+                        <h2> Mobile-Market </h2>
                     </div>
                         
                     <div className="search">
                         <a className="mobile-search" href="#" onClick={this.handleMobileSearch.bind(this)}><img src="https://res.cloudinary.com/sivadass/image/upload/v1494756966/icons/search-green.png" alt="search"/></a>
                         <form action="#" method="get" className={this.state.mobileSearch ? "search-form active" : "search-form"}>
                             <a className="back-button" href="#" onClick={this.handleSearchNav.bind(this)}><img src="https://res.cloudinary.com/sivadass/image/upload/v1494756030/icons/back.png" alt="back"/></a>
-                            <input type="search" ref="searchBox" placeholder="Search for Vegetables and Fruits" className="search-keyword" onChange={this.props.handleSearch}/>
-                            <button className="search-button" type="submit" onClick={this.handleSubmit.bind(this)}></button>
+                            <input type="search" ref="searchBox" placeholder="Search" className="search-keyword" onChange={this.props.handleSearch}/>
                         </form>
                     </div>
 
@@ -101,14 +106,15 @@ class Header extends Component{
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td>No. of items</td>
+                                        <td>Số lượng</td>
                                         <td>:</td>
                                         <td><strong>{this.props.totalItems}</strong></td>
                                     </tr>
                                     <tr>
-                                        <td>Sub Total</td>
+                                        <td>Tổng </td>
                                         <td>:</td>
                                         <td><strong>{this.props.total}</strong></td>
+                                        <td> vnd </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -126,10 +132,14 @@ class Header extends Component{
                             </div>
                         </div>
                     </div>
+                    <div className="signin">
+                        <button id="signin_button" class="btn btn-primary active"> sign in </button>
+                    </div>
                 </div>
             </header>
         )
     }
+
 }
 
 export default Header;
