@@ -1,0 +1,17 @@
+footer{
+    color: $gray-medium;
+    font-size: 14px;
+    text-align: center;
+    padding: 32px;
+    background: #CDC673;
+    strong{
+        color: $gray-medium;
+    }
+    .footer-links{
+        margin-bottom: 24px;
+        a{
+            margin: 0 8px;
+            color: #696969;
+        }
+    }
+}
