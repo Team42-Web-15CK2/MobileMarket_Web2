@@ -10,8 +10,7 @@ import QuickView from './components/QuickView';
 import LoginForm from './components/Login';
 import './scss/style.scss';
 
-
-export default class Login extends Component{
+export default class Contact extends Component{
 	constructor(props){
 		super();
 		console.log(props)
@@ -42,7 +41,7 @@ export default class Login extends Component{
 	// Fetch Initial Set of Products from external API
 	getProducts(){
 		//For Localhost use the below url
-		const url = "http://localhost:3000/api/product/catalog/2";
+		const url = "http://localhost:3000/api/product";
 
 		// For Production use the below url
 		//const url="https://quarkbackend.com/getfile/sivadass/products";
@@ -177,7 +176,7 @@ export default class Login extends Component{
 				/>
 				<br />
 				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-				<LoginForm />
+				<div><h1>khiem</h1></div>
 				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />
