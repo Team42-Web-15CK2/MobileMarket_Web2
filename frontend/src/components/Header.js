@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import CartScrollBar from './CartScrollBar';
 import Counter from './Counter';
+import Checkout from './Checkout';
+import Narbar from './Narbar';
 import EmptyCart from '../empty-states/EmptyCart';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import {findDOMNode} from 'react-dom';
-import { BrowserRouter as Router,
-    Route,
-    Link,
-    Redirect,
-    withRouter
-  } from "react-router-dom";
 
-class Header extends Component{
+import checkout from './Checkout';
+import {Route} from 'react-router-dom';
+
+
+export default class Header extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -70,10 +70,10 @@ class Header extends Component{
                     <img className="product-image" src={product.image} />
                     <div className="product-info">
                         <p className="product-name">{product.name}</p>
-                        <p className="product-price">{product.price}</p>
+                        <p className="product-price">giá:{product.price}</p>
                     </div>
                     <div className="product-total">
-                        <p className="quantity">{product.quantity} {product.quantity > 1 ?"Nos." : "No." } </p>
+                        <p className="quantity">số lượng:{product.quantity}</p>
                         <p className="amount">{product.quantity * product.price}</p>
                     </div>
                     <a className="product-remove" href="#" onClick={this.props.removeProduct.bind(this, product.id)}>×</a>
@@ -119,10 +119,12 @@ class Header extends Component{
                                 </tbody>
                             </table>
                         </div>
-                        <a className="cart-icon" href="#" onClick={this.handleCart.bind(this)} ref="cartButton">
+                        
+                        <a className="cart-icon" href="#" onClick={this.handleCart.bind(this)} ref="cartButton" >
                             <img className={this.props.cartBounce ? "tada" : " "} src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt="Cart"/>
                             {this.props.totalItems ? <span className="cart-count">{this.props.totalItems}</span> : "" }
                         </a>
+                      
                         <div className={this.state.showCart ? "cart-preview active" : "cart-preview"} ref="cartPreview">
                             <CartScrollBar>
                                 {view}
@@ -132,14 +134,10 @@ class Header extends Component{
                             </div>
                         </div>
                     </div>
-                    <div className="signin">
-                        <button id="signin_button" class="btn btn-primary active"> sign in </button>
-                    </div>
                 </div>
-            </header>
+                <Narbar />
+            </header>        
         )
     }
 
 }
-
-export default Header;

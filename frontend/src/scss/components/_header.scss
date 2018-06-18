@@ -1,6 +1,7 @@
 header{
     background: #CDC673;
-    padding: 30px 35px;
+    padding-top: 20px; 
+    margin-bottom: 50px;
     box-shadow: 0px 8px 18px rgba(0,0,0,0.033);
     position: fixed;
     top: 0;
@@ -12,16 +13,14 @@ header{
         // display: -webkit-flex;
         max-width: 1000px;
         margin: 0 auto;
-        padding: 0 10px;
     }
     @media (max-width: 991px){
-        padding: 16px;
         .container{
             padding: 0;
         }
     }
     @media (max-width: 990px){
-        padding: 8px 12px;
+   
     }
 }
 @keyframes slideUp{
@@ -281,8 +280,8 @@ header{
         .product-price{
             color: $gray-light;
             font-weight: 700;
-            &:before{
-                content: "₹ "
+            &:after{
+                content: " vnd"
             }
         }
     }
@@ -298,7 +297,7 @@ header{
             font-weight: 700;
             text-align: right;
             &:before{
-                content: "₹ "
+                content: " vnd"
             }
         }
         
@@ -348,10 +347,4 @@ header{
   animation-name: tada;
   animation-duration: 300ms;
   animation-fill-mode: both;
-}
-
-.signin{
-    margin-left: 20px;
-    width: 100px;
-    text-align: right;
 }

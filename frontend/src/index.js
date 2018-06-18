@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, {render} from 'react-dom';
 import axios from 'axios';
 import Header from './components/Header';
 import Products from './components/Products';
 import Pagination from './components/Pagination';
-import Footer from './components/Footer';
+import Footer from './components/Footer';``
+import Narbar from './components/Narbar';
 import QuickView from './components/QuickView';
+
 import './scss/style.scss';
 
-class App extends Component{
+export default class App extends Component{
 	constructor(){
 		super();
 		this.state = {
@@ -73,7 +75,6 @@ class App extends Component{
 		let productID = selectedProducts.id;
 		let productQty = selectedProducts.quantity;
 		if(this.checkProduct(productID)){
-			console.log('hi');
 			let index = cartItem.findIndex((x => x.id == productID));
 			cartItem[index].quantity = Number(cartItem[index].quantity) + Number(productQty);
 			this.setState({
@@ -158,6 +159,7 @@ class App extends Component{
 	render(){
 		return(
 			<div className="container">
+				
 				<Header
 					cartBounce={this.state.cartBounce}
 					total={this.state.totalAmount}
@@ -171,6 +173,7 @@ class App extends Component{
 					updateQuantity={this.updateQuantity}
 					productQuantity={this.state.moq}
 				/>
+				
 				<Products
 					productsList={this.state.products}
 					searchTerm={this.state.term}
@@ -179,6 +182,7 @@ class App extends Component{
 					updateQuantity={this.updateQuantity}
 					openModal={this.openModal}
 				/>
+				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />
 			</div>
@@ -186,7 +190,3 @@ class App extends Component{
 	}
 }
 
-ReactDOM.render(
-	<App />,
-  	document.getElementById('root')
-);
