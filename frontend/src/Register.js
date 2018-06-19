@@ -7,20 +7,19 @@ import Pagination from './components/Pagination';
 import Footer from './components/Footer';``
 import Narbar from './components/Narbar';
 import QuickView from './components/QuickView';
-
+import RegisterForm from './components/Register';
 import './scss/style.scss';
 
-export default class App extends Component{
-	constructor(){
+
+export default class Register extends Component{
+	constructor(props){
 		super();
-		let cartValue = sessionStorage.getItem( "cart" );
-        let totalItems = sessionStorage.getItem( "totalItems" );
-        let totalAmount = sessionStorage.getItem( "totalAmount" );
+		console.log(props)
 		this.state = {
 			products: [],
-			cart: cartValue ? JSON.parse( cartValue ) : [],
-            totalItems: totalItems ? totalItems : 0,
-            totalAmount: totalAmount ? totalAmount : 0,
+			cart: [],
+			totalItems: 0,
+			totalAmount: 0, 
 			term: '',
 			category: '',
 			cartBounce: false,
@@ -41,23 +40,23 @@ export default class App extends Component{
 		this.closeModal = this.closeModal.bind(this);
 	}
 	// Fetch Initial Set of Products from external API
-	getProducts(){
-		//For Localhost use the below url
-		const url = "http://localhost:3000/api/product";
+	// getProducts(){
+	// 	//For Localhost use the below url
+	// 	const url = "http://localhost:3000/api/product/catalog/2";
 
-		// For Production use the below url
-		//const url="https://quarkbackend.com/getfile/sivadass/products";
+	// 	// For Production use the below url
+	// 	//const url="https://quarkbackend.com/getfile/sivadass/products";
 
-		axios.get(url)
-			.then(response => {
-				this.setState({
-					products : response.data
-				})
-			})
-	}
-	componentWillMount(){
-		this.getProducts();
-	}
+	// 	axios.get(url)
+	// 		.then(response => {
+	// 			this.setState({
+	// 				products : response.data
+	// 			})
+	// 		})
+	// }
+	// componentWillMount(){
+	// 	this.getProducts();
+	// }
 
 	// Search by Keyword
 	handleSearch(event){
@@ -90,7 +89,7 @@ export default class App extends Component{
 			cart : cartItem,
 			cartBounce: true,
 		});
-		sessionStorage.setItem( "cart", JSON.stringify( this.state.cart ) );
+
 		setTimeout(function(){
 			this.setState({
 				cartBounce:false,
@@ -109,7 +108,6 @@ export default class App extends Component{
 		this.setState({
 			cart: cart
 		})
-		sessionStorage.setItem( "cart", JSON.stringify( this.state.cart ) );
 		this.sumTotalItems(this.state.cart);
 		this.sumTotalAmount(this.state.cart);
 		e.preventDefault();
@@ -124,18 +122,16 @@ export default class App extends Component{
         let total = 0;
         let cart = this.state.cart;
 		total = cart.length;
-		sessionStorage.setItem( "totalItems", total);
 		this.setState({
 			totalItems: total
-		});
+		})
     }
 	sumTotalAmount(){
         let total = 0;
         let cart = this.state.cart;
         for (var i=0; i<cart.length; i++) {
             total += cart[i].price * parseInt(cart[i].quantity);
-		}
-		sessionStorage.setItem( "totalAmount", total);
+        }
 		this.setState({
 			totalAmount: total
 		})
@@ -179,15 +175,9 @@ export default class App extends Component{
 					updateQuantity={this.updateQuantity}
 					productQuantity={this.state.moq}
 				/>
-				
-				<Products
-					productsList={this.state.products}
-					searchTerm={this.state.term}
-					addToCart={this.handleAddToCart}
-					productQuantity={this.state.quantity}
-					updateQuantity={this.updateQuantity}
-					openModal={this.openModal}
-				/>
+				<br />
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				<RegisterForm />
 				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />

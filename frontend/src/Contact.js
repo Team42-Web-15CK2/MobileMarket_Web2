@@ -174,9 +174,11 @@ export default class Contact extends Component{
 					updateQuantity={this.updateQuantity}
 					productQuantity={this.state.moq}
 				/>
-				<br />
 				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-				<div><h1>khiem</h1></div>
+				<div>
+					<h1>Võ Lê Bảo Khiêm - 1560262</h1>
+					<h1>Đỗ Đăng Khoa - 1560264</h1>
+				</div>
 				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />

@@ -7,10 +7,11 @@ import ProductCatalog from '../ProductCatalog';
 import ProductLaptop from '../ProductLaptop';
 import Login from '../Login';
 import Contact from '../Contact';
+import Register from '../Register';
 
 
 const AppRouter = () => (
-  <HashRouter history={hashHistory}>
+  <HashRouter history={hashHistory} hashType="noslash">
     <div>
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
@@ -18,6 +19,7 @@ const AppRouter = () => (
         <Route path="/catalog/dien-thoai" component={ProductCatalog} exact={true} />
         <Route path="/catalog/laptop" component={ProductLaptop} exact={true} />
         <Route path="/login" component={Login} exact={true} />
+        <Route path="/register" component={Register} exact={true} />
         <Route path="/contact" component={Contact} exact={true} />
         {/* <Route component={NotFoundPage} /> */} 
       </Switch>

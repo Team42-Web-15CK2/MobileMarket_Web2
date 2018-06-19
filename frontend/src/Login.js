@@ -40,23 +40,23 @@ export default class Login extends Component{
 		this.closeModal = this.closeModal.bind(this);
 	}
 	// Fetch Initial Set of Products from external API
-	getProducts(){
-		//For Localhost use the below url
-		const url = "http://localhost:3000/api/product/catalog/2";
+	// getProducts(){
+	// 	//For Localhost use the below url
+	// 	const url = "http://localhost:3000/api/product/catalog/2";
 
-		// For Production use the below url
-		//const url="https://quarkbackend.com/getfile/sivadass/products";
+	// 	// For Production use the below url
+	// 	//const url="https://quarkbackend.com/getfile/sivadass/products";
 
-		axios.get(url)
-			.then(response => {
-				this.setState({
-					products : response.data
-				})
-			})
-	}
-	componentWillMount(){
-		this.getProducts();
-	}
+	// 	axios.get(url)
+	// 		.then(response => {
+	// 			this.setState({
+	// 				products : response.data
+	// 			})
+	// 		})
+	// }
+	// componentWillMount(){
+	// 	this.getProducts();
+	// }
 
 	// Search by Keyword
 	handleSearch(event){

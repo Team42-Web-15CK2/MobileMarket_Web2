@@ -11,14 +11,16 @@ import QuickView from './components/QuickView';
 import './scss/style.scss';
 
 export default class ProductCatalog extends Component{
-	constructor(props){
+	constructor(){
 		super();
-		console.log(props)
+		let cartValue = sessionStorage.getItem( "cart" );
+        let totalItems = sessionStorage.getItem( "totalItems" );
+        let totalAmount = sessionStorage.getItem( "totalAmount" );
 		this.state = {
 			products: [],
-			cart: [],
-			totalItems: 0,
-			totalAmount: 0, 
+			cart: cartValue ? JSON.parse( cartValue ) : [],
+            totalItems: totalItems ? totalItems : 0,
+            totalAmount: totalAmount ? totalAmount : 0,
 			term: '',
 			category: '',
 			cartBounce: false,
@@ -88,7 +90,7 @@ export default class ProductCatalog extends Component{
 			cart : cartItem,
 			cartBounce: true,
 		});
-
+		sessionStorage.setItem( "cart", JSON.stringify( this.state.cart ) );
 		setTimeout(function(){
 			this.setState({
 				cartBounce:false,
@@ -107,6 +109,7 @@ export default class ProductCatalog extends Component{
 		this.setState({
 			cart: cart
 		})
+		sessionStorage.setItem( "cart", JSON.stringify( this.state.cart ) );
 		this.sumTotalItems(this.state.cart);
 		this.sumTotalAmount(this.state.cart);
 		e.preventDefault();
@@ -121,6 +124,7 @@ export default class ProductCatalog extends Component{
         let total = 0;
         let cart = this.state.cart;
 		total = cart.length;
+		sessionStorage.setItem( "totalItems", total);
 		this.setState({
 			totalItems: total
 		})
@@ -130,7 +134,8 @@ export default class ProductCatalog extends Component{
         let cart = this.state.cart;
         for (var i=0; i<cart.length; i++) {
             total += cart[i].price * parseInt(cart[i].quantity);
-        }
+		}
+		sessionStorage.setItem( "totalAmount", total);
 		this.setState({
 			totalAmount: total
 		})

@@ -25,13 +25,17 @@ export default class Login extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    axios.post('/api/user/login', {
-      username: this.state.email,
-      password: this.state.password
-    })
+    axios.post('/auth/login?email='+ this.state.email +'&password='+this.state.password)
     .then(response => {
-      console.log(response); 
+      location.reload();
+      return;
     })
+    .catch(function (error) {
+      new Noty({
+        text: 'Information is not correct',
+        type: 'error',
+    }).show();
+    });
   }
 
   render() {

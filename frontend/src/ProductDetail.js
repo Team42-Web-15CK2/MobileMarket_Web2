@@ -175,14 +175,7 @@ export default class ProductDetail extends Component{
 					productQuantity={this.state.moq}
 				/>
 				
-				<Products
-					productsList={this.state.products}
-					searchTerm={this.state.term}
-					addToCart={this.handleAddToCart}
-					productQuantity={this.state.quantity}
-					updateQuantity={this.updateQuantity}
-					openModal={this.openModal}
-				/>
+				{this.state.products}
 				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />
