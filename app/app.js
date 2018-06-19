@@ -1,15 +1,23 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
+let auth = require('./routes/auth/auth');
+let user = require('./routes/user/user');
 
-var indexRouter = require('./routes/index');
-var apiRouter = require('./routes/api');
+const passport    = require('passport');
+
+require('./passport');
+
+let indexRouter = require('./routes/index');
+let apiRouter = require('./routes/api');
 
 
-var app = express();
+let app = express();
 
+app.use('/user', passport.authenticate('jwt', {session: false}), user);
+app.use('/auth', auth);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -36,7 +44,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
-var cors = require('cors');
+let cors = require('cors');
 
 // use it before all route definitions
 app.use(cors({origin: 'null'}));
