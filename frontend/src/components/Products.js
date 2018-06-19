@@ -4,6 +4,7 @@ import LoadingProducts from '../loaders/Products';
 import NoResults from "../empty-states/NoResults";
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
+
 class Products extends Component{
 	constructor(){
 		super();
@@ -42,6 +43,7 @@ class Products extends Component{
 			</CSSTransitionGroup>
 		}
 		return(
+			
 			<div className="products-wrapper">
 				{view}
 			</div>

@@ -5,7 +5,7 @@ module.exports = {
   watch: true,
   context: path.resolve(__dirname, './src'),
   entry: {
-    app: './index.js',
+    app: './app.js',
   },
   output: {
     path: path.resolve(__dirname, './../app/public/dist'),
@@ -40,5 +40,10 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('style.css'),
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true
+  }
+
 };

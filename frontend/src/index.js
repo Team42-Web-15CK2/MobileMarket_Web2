@@ -1,21 +1,26 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, {render} from 'react-dom';
 import axios from 'axios';
 import Header from './components/Header';
 import Products from './components/Products';
 import Pagination from './components/Pagination';
-import Footer from './components/Footer';
+import Footer from './components/Footer';``
+import Narbar from './components/Narbar';
 import QuickView from './components/QuickView';
+
 import './scss/style.scss';
 
-class App extends Component{
+export default class App extends Component{
 	constructor(){
 		super();
+		let cartValue = sessionStorage.getItem( "cart" );
+        let totalItems = sessionStorage.getItem( "totalItems" );
+        let totalAmount = sessionStorage.getItem( "totalAmount" );
 		this.state = {
 			products: [],
-			cart: [],
-			totalItems: 0,
-			totalAmount: 0, 
+			cart: cartValue ? JSON.parse( cartValue ) : [],
+            totalItems: totalItems ? totalItems : 0,
+            totalAmount: totalAmount ? totalAmount : 0,
 			term: '',
 			category: '',
 			cartBounce: false,
@@ -73,7 +78,6 @@ class App extends Component{
 		let productID = selectedProducts.id;
 		let productQty = selectedProducts.quantity;
 		if(this.checkProduct(productID)){
-			console.log('hi');
 			let index = cartItem.findIndex((x => x.id == productID));
 			cartItem[index].quantity = Number(cartItem[index].quantity) + Number(productQty);
 			this.setState({
@@ -86,7 +90,7 @@ class App extends Component{
 			cart : cartItem,
 			cartBounce: true,
 		});
-
+		sessionStorage.setItem( "cart", JSON.stringify( this.state.cart ) );
 		setTimeout(function(){
 			this.setState({
 				cartBounce:false,
@@ -105,6 +109,7 @@ class App extends Component{
 		this.setState({
 			cart: cart
 		})
+		sessionStorage.setItem( "cart", JSON.stringify( this.state.cart ) );
 		this.sumTotalItems(this.state.cart);
 		this.sumTotalAmount(this.state.cart);
 		e.preventDefault();
@@ -119,16 +124,18 @@ class App extends Component{
         let total = 0;
         let cart = this.state.cart;
 		total = cart.length;
+		sessionStorage.setItem( "totalItems", total);
 		this.setState({
 			totalItems: total
-		})
+		});
     }
 	sumTotalAmount(){
         let total = 0;
         let cart = this.state.cart;
         for (var i=0; i<cart.length; i++) {
             total += cart[i].price * parseInt(cart[i].quantity);
-        }
+		}
+		sessionStorage.setItem( "totalAmount", total);
 		this.setState({
 			totalAmount: total
 		})
@@ -158,6 +165,7 @@ class App extends Component{
 	render(){
 		return(
 			<div className="container">
+				
 				<Header
 					cartBounce={this.state.cartBounce}
 					total={this.state.totalAmount}
@@ -171,6 +179,7 @@ class App extends Component{
 					updateQuantity={this.updateQuantity}
 					productQuantity={this.state.moq}
 				/>
+				
 				<Products
 					productsList={this.state.products}
 					searchTerm={this.state.term}
@@ -179,6 +188,7 @@ class App extends Component{
 					updateQuantity={this.updateQuantity}
 					openModal={this.openModal}
 				/>
+				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />
 			</div>
@@ -186,7 +196,3 @@ class App extends Component{
 	}
 }
 
-ReactDOM.render(
-	<App />,
-  	document.getElementById('root')
-);

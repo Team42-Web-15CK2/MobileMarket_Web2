@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Counter from './Counter';
-
+import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
 class Product extends Component{
 	constructor(props){
 		super(props);
@@ -23,6 +23,7 @@ class Product extends Component{
                 quantity: quantity
             }
         }, function(){
+            
             this.props.addToCart(this.state.selectedProduct);
         })
         this.setState({
@@ -57,9 +58,14 @@ class Product extends Component{
         return(
             <div className="product">
                 <div className="product-image">
-                    <img src={image} alt={this.props.name} onClick={this.quickView.bind(this, image, name, price, id, quantity)}/>
+                    <img src={"/" +image} alt={this.props.name} onClick={this.quickView.bind(this, image, name, price, id, quantity)}/>
                 </div>
-                <h4 className="product-name">{this.props.name}</h4>
+                <h4 className="product-name">
+                
+                <Link to={{pathname:`/product/${this.props.id}`}} activeClassName='hurray'>{this.props.name}</Link>
+                
+                
+                </h4>
                 <p className="product-price">{this.formatPrice(this.props.price)}</p>
                 <Counter productQuantity={quantity} updateQuantity={this.props.updateQuantity} resetQuantity={this.resetQuantity}/>
                 <div className="product-action">

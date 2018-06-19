@@ -1,27 +1,25 @@
 header{
     background: #CDC673;
-    padding: 30px 35px;
+    padding-top: 20px;
+    margin-bottom: 50px;
     box-shadow: 0px 8px 18px rgba(0,0,0,0.033);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
-    animation: slideUp 300ms linear;
     .container{
         display: flex;
         // display: -webkit-flex;
         max-width: 1000px;
         margin: 0 auto;
-        padding: 0 10px;
     }
     @media (max-width: 991px){
-        padding: 16px;
         .container{
             padding: 0;
         }
     }
     @media (max-width: 990px){
-        padding: 8px 12px;
+
     }
 }
 @keyframes slideUp{
@@ -40,7 +38,7 @@ header{
     margin-top: 3px;
     @media (max-width: 480px){
         width: 102px;
-        
+
     }
 }
 
@@ -181,8 +179,8 @@ header{
         display: block;
         top: -9px;
         right: 8px;
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         border-bottom: 8px solid $gray-eighty;
@@ -194,8 +192,8 @@ header{
         display: block;
         top: -7px;
         right: 9px;
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
         border-bottom: 7px solid $white;
@@ -281,8 +279,8 @@ header{
         .product-price{
             color: $gray-light;
             font-weight: 700;
-            &:before{
-                content: "₹ "
+            &:after{
+                content: " vnd"
             }
         }
     }
@@ -298,10 +296,10 @@ header{
             font-weight: 700;
             text-align: right;
             &:before{
-                content: "₹ "
+                content: " vnd"
             }
         }
-        
+
     }
     .product-remove{
         margin-left: 24px;
@@ -348,10 +346,4 @@ header{
   animation-name: tada;
   animation-duration: 300ms;
   animation-fill-mode: both;
-}
-
-.signin{
-    margin-left: 20px;
-    width: 100px;
-    text-align: right;
 }
