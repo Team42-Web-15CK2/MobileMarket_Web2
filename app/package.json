@@ -11,12 +11,14 @@
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^8.3.0",
+    "jwt-simple": "^0.5.1",
     "morgan": "~1.9.0",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
-    "react-bootstrap": "^0.32.1",
-    "react-custom-scrollbars": "^4.2.1",
-    "react-transition-group": "^1.2.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.37.10",
     "sequelize-cli": "^4.0.0"
   }

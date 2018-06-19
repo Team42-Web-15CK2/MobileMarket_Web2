@@ -133,14 +133,5 @@ router.get('/comment/:id_product', function(req, res){
     })
 })
 
-router.post('/api/user/login',function(req, res){
-  //res.json({user:'1111'});
-  model.user.findOne({
-    attributes: ['token'],
-    where: { email: {$gt:req.params.username}, password: {$gt:req.params.password} }
-  }).then(function(user){
-    res.json(user)
-  })
-});
 
 module.exports = router;
