@@ -7,7 +7,7 @@ import Pagination from './components/Pagination';
 import Footer from './components/Footer';``
 import Narbar from './components/Narbar';
 import QuickView from './components/QuickView';
-
+import config from './config/config';
 import './scss/style.scss';
 
 export default class App extends Component{
@@ -43,7 +43,7 @@ export default class App extends Component{
 	// Fetch Initial Set of Products from external API
 	getProducts(){
 		//For Localhost use the below url
-		const url = "http://localhost:3000/api/product";
+		const url = config.url + "/api/product";
 
 		// For Production use the below url
 		//const url="https://quarkbackend.com/getfile/sivadass/products";
