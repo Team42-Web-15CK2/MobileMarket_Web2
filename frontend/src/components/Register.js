@@ -53,27 +53,27 @@ export default class Register extends Component {
           <Form inline >
              <FormGroup controlId="formInlineName">
                 <h3>Name</h3>
-                <input className="input"  type="text" placeholder="name...." onChange={e => this.state.name = e.target.value} />
+                <input  className="input"  type="text" placeholder="name...." onChange={e => this.state.name = e.target.value} required/>
              </FormGroup>
              <br />
              <FormGroup controlId="formHorizontalEmail">
                 <h3> Email </h3>
-                <input className="input"  type="text" placeholder="email...." onChange={e => this.state.email = e.target.value}/>
+                <input  className="input"  type="email" placeholder="email...." onChange={e => this.state.email = e.target.value} required/>
              </FormGroup>
              <br />
              <FormGroup controlId="formInlineName">
                 <h3> Password </h3>
-                <input className="input"  type="text" placeholder="name...." onChange={e => this.state.password = e.target.value} />
+                <input  className="input"  type="password" placeholder="name...." onChange={e => this.state.password = e.target.value} required/>
              </FormGroup>
              <br />
              <FormGroup controlId="formInlineName">
                 <h3> Phonenumber </h3>
-                <input className="input"  type="text" placeholder="phonenumber...." onChange={e => this.state.phonenumber = e.target.value}/>
+                <input  className="input"  type="text" placeholder="phonenumber...." onChange={e => this.state.phonenumber = e.target.value} required/>
              </FormGroup>
              <br />
              <FormGroup controlId="formInlineName">
                 <h3> Address </h3>
-                <input className="input"  type="text" placeholder="address...." onChange={e => this.state.address = e.target.value}/>
+                <input className="input"  type="text" placeholder="address...." onChange={e => this.state.address = e.target.value} required/>
              </FormGroup>   
               <br />
              <FormGroup>
