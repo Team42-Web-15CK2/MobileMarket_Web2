@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import axios from 'axios';
 import Header from './components/Header';
-import Products from './components/Products';
+import Products from './components/Product';
 import Pagination from './components/Pagination';
 import Footer from './components/Footer';``
 import Narbar from './components/Narbar';
 import QuickView from './components/QuickView';
 import config from './config/config';
 import './scss/style.scss';
+import Product from './components/Product';
 
 export default class ProductDetail extends Component{
 	constructor(){
@@ -161,6 +162,16 @@ export default class ProductDetail extends Component{
 	}
 	
 	render(){
+
+		let product = this.state.products[0] || null
+		
+		if (!product) {
+			
+			return (
+				<div><h1>no information</h1></div>
+			)
+		}
+
 		return(
 			<div className="container">
 				
@@ -177,15 +188,27 @@ export default class ProductDetail extends Component{
 					updateQuantity={this.updateQuantity}
 					productQuantity={this.state.moq}
 				/>
+
+				<div className="productdetail">
+					<div className="detail">
+						<img className="detailimage" src={product.image_url} alt={this.state.products.name}/>
+					</div>
+					<div className="detail">
+						<div className="detailinfo">
+							<h3> Tên sản phẩm: <p className="title"> {product.name} </p> </h3>
+						</div>
+						<div className="detailinfo">
+							<h3> Thông tin chi tiết: <br /> <p className="title">{product.description}</p> </h3>
+						</div>
+						<div className="detailinfo">
+							<h3>  Giá bán: <p className="title"> {product.price} </p> </h3>
+						</div>
+						<div className="detailinfo">
+							<h3> Số lượng còn : <p className="title"> {product.remaining_quantity} </p> </h3>
+						</div>
+					</div>
+				</div>
 				
-				<Products
-					productsList={this.state.products}
-					searchTerm={this.state.term}
-					addToCart={this.handleAddToCart}
-					productQuantity={this.state.quantity}
-					updateQuantity={this.updateQuantity}
-					openModal={this.openModal}
-				/>
 				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />

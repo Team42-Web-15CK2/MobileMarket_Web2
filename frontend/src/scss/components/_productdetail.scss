@@ -1,0 +1,42 @@
+.productdetail{
+    padding-top:70px;
+    text-align: left;
+    margin-left: 60px;
+    margin-top: 70px; 
+    width: 100% ;
+    height: 600px;
+    display: flex;
+}
+
+.detail{
+    margin-top:30px;
+    margin-left: 30px;
+    margin-bottom: 60px;
+    float: left;
+  
+}
+
+.detailinfo{
+    
+    text-align: left;
+    padding-top: 15px;
+    padding-left: 20px;
+    display: flex;  
+}
+
+
+.detailimage{
+    width: 340px;
+    height: 380px;
+    float: left;
+}
+
+
+.title{
+    width: 500px;
+    margin-left: 170px;
+    border: 4px solid rgb(127, 160, 145);
+    border-radius: 5px;
+    text-align: inherit;
+    padding-left: 25px;
+}
