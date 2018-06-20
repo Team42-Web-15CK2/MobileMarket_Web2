@@ -3,10 +3,13 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let bodyParser = require('body-parser');
 let auth = require('./routes/auth/auth');
 let user = require('./routes/user/user');
 
 const passport    = require('passport');
+
+let app = express();
 
 require('./passport');
 
@@ -14,13 +17,16 @@ let indexRouter = require('./routes/index');
 let apiRouter = require('./routes/api');
 
 
-let app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use('/user', passport.authenticate('jwt', {session: false}), user);
 app.use('/auth', auth);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -34,6 +40,7 @@ app.use('/api', apiRouter);
 app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,7 +65,10 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error',{
+    message: err.message,
+    error: err
+  });
 });
 
 module.exports = app;

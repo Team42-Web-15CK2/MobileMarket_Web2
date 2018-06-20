@@ -175,8 +175,7 @@ export default class Login extends Component{
 					updateQuantity={this.updateQuantity}
 					productQuantity={this.state.moq}
 				/>
-				<br />
-				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				
 				<LoginForm />
 				
 				<Footer />

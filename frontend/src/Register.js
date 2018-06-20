@@ -175,8 +175,7 @@ export default class Register extends Component{
 					updateQuantity={this.updateQuantity}
 					productQuantity={this.state.moq}
 				/>
-				<br />
-				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				
 				<RegisterForm />
 				
 				<Footer />

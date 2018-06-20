@@ -6,6 +6,7 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import {findDOMNode} from 'react-dom';
 import axios from 'axios';
 
+
 export default class Header extends Component {
     constructor(props) {
         super(props);
@@ -68,7 +69,7 @@ export default class Header extends Component {
     handleClickOutside(event) {
         const cartNode = findDOMNode(this.refs.cartPreview);
         const buttonNode = findDOMNode(this.refs.cartButton);
-        if (cartNode.classList.contains('active')) {
+        if (cartNode.classList.contains("active")) {
             if (!cartNode || !cartNode.contains(event.target)) {
                 this.setState({
                     showCart: false

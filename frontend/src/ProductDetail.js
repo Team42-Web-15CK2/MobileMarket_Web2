@@ -11,14 +11,16 @@ import config from './config/config';
 import './scss/style.scss';
 
 export default class ProductDetail extends Component{
-	constructor(props){
+	constructor(){
 		super();
-		console.log(props)
+		let cartValue = sessionStorage.getItem( "cart" );
+        let totalItems = sessionStorage.getItem( "totalItems" );
+        let totalAmount = sessionStorage.getItem( "totalAmount" );
 		this.state = {
 			products: [],
-			cart: [],
-			totalItems: 0,
-			totalAmount: 0, 
+			cart: cartValue ? JSON.parse( cartValue ) : [],
+            totalItems: totalItems ? totalItems : 0,
+            totalAmount: totalAmount ? totalAmount : 0,
 			term: '',
 			category: '',
 			cartBounce: false,
@@ -37,11 +39,12 @@ export default class ProductDetail extends Component{
 		this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
 	}
 	// Fetch Initial Set of Products from external API
 	getProducts(){
 		//For Localhost use the below url
-		const url = config.url + "/api/product"+ this.props.match.params.id;
+		const url = config.url + "/api/product/ "+ this.props.match.params.id;
 
 		// For Production use the below url
 		//const url="https://quarkbackend.com/getfile/sivadass/products";
@@ -88,7 +91,7 @@ export default class ProductDetail extends Component{
 			cart : cartItem,
 			cartBounce: true,
 		});
-
+		sessionStorage.setItem( "cart", JSON.stringify( this.state.cart ) );
 		setTimeout(function(){
 			this.setState({
 				cartBounce:false,
@@ -175,7 +178,14 @@ export default class ProductDetail extends Component{
 					productQuantity={this.state.moq}
 				/>
 				
-				{this.state.products}
+				<Products
+					productsList={this.state.products}
+					searchTerm={this.state.term}
+					addToCart={this.handleAddToCart}
+					productQuantity={this.state.quantity}
+					updateQuantity={this.updateQuantity}
+					openModal={this.openModal}
+				/>
 				
 				<Footer />
 				<QuickView product={this.state.quickViewProduct} openModal={this.state.modalActive} closeModal={this.closeModal} />

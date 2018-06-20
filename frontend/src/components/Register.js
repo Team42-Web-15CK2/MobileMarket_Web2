@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM, {render} from 'react-dom';
 import axios from 'axios';
-import {Form, FormGroup, Col, Checkbox, Button, ControlLabel, FormControl} from 'react-bootstrap';
+import {Form, FormGroup, Col, Checkbox, Button, h3, FormControl} from 'react-bootstrap';
 
-export default class Login extends Component {
+export default class Register extends Component {
 
   constructor(props) {
     super(props);
@@ -21,55 +21,64 @@ export default class Login extends Component {
   onChange (key, value) {
     this.setState({ [key]: value })
   }
-
+  
 
   handleFormSubmit(e) {
+
+    var dataSend = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      phonenumber: this.state.phonenumber,
+      address: this.state.address
+    }
+
     e.preventDefault();
-    axios.post('/auth/register?name='+ this.state.name+'&email='+this.state.email+
-    '&password='+this.state.password+'&address='+this.state.address+'&phonenumber='+this.state.phonenumber)
-    .then(response => {
+    axios.post('/auth/register', dataSend)
+    .then((response) => {
       console.log(response); 
-    })
-    .catch(function (error) {
-      new Noty({
-        text: 'Information is not correct',
-        type: 'error',
-    }).show();
+    }).catch(error =>{console.log(error.message)
+    // .catch(function (error) {
+    //   new Noty({
+    //     text: 'Information is not correct',
+    //     type: 'error',
+    // }).show();
     });
+    alert("thanh cong")
   }
 
   render() {
     return (
       <div className="login">
-          <Form inline>
+          <Form inline >
              <FormGroup controlId="formInlineName">
-                <ControlLabel>Name</ControlLabel>{' '}
-                <FormControl type="text" placeholder="name...." onChange={e => this.state.name = e.target.value} />
-             </FormGroup>{' '}
+                <h3>Name</h3>
+                <input className="input"  type="text" placeholder="name...." onChange={e => this.state.name = e.target.value} />
+             </FormGroup>
              <br />
              <FormGroup controlId="formHorizontalEmail">
-                <ControlLabel>email</ControlLabel>{' '}
-                <FormControl type="text" placeholder="email...." onChange={e => this.state.email = e.target.value}/>
-             </FormGroup>{' '}
+                <h3> Email </h3>
+                <input className="input"  type="text" placeholder="email...." onChange={e => this.state.email = e.target.value}/>
+             </FormGroup>
              <br />
              <FormGroup controlId="formInlineName">
-                <ControlLabel>password</ControlLabel>{' '}
-                <FormControl type="text" placeholder="name...." onChange={e => this.state.password = e.target.value} />
-             </FormGroup>{' '}
+                <h3> Password </h3>
+                <input className="input"  type="text" placeholder="name...." onChange={e => this.state.password = e.target.value} />
+             </FormGroup>
              <br />
              <FormGroup controlId="formInlineName">
-                <ControlLabel>phonenumber</ControlLabel>{' '}
-                <FormControl type="text" placeholder="phonenumber...." onChange={e => this.state.phonenumber = e.target.value}/>
-             </FormGroup>{' '}
+                <h3> Phonenumber </h3>
+                <input className="input"  type="text" placeholder="phonenumber...." onChange={e => this.state.phonenumber = e.target.value}/>
+             </FormGroup>
              <br />
              <FormGroup controlId="formInlineName">
-                <ControlLabel>address</ControlLabel>{' '}
-                <FormControl type="text" placeholder="address...." onChange={e => this.state.address = e.target.value}/>
-             </FormGroup>{' '}     
+                <h3> Address </h3>
+                <input className="input"  type="text" placeholder="address...." onChange={e => this.state.address = e.target.value}/>
+             </FormGroup>   
               <br />
              <FormGroup>
                 <Col smOffset={2} sm={10}>
-                  <Button type="submit" onClick={this.handleFormSubmit}>Sign up</Button>
+                  <Button className="accept" type="submit" onClick={this.handleFormSubmit}>Sign up</Button>
                 </Col>
               </FormGroup>
           </Form>    

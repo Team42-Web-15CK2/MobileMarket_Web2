@@ -3,7 +3,9 @@ const router = express.Router();
 // const authController = require('../../controllers/authController');
 const jwt      = require('jsonwebtoken');
 const passport = require('passport');
-// const model = require('./../models');
+var model = require('../../models');
+
+
 router.post('/login', function (req, res, next) {
 
     passport.authenticate('local', {session: false}, (err, user, info) => {
@@ -28,6 +30,26 @@ router.post('/login', function (req, res, next) {
     })
     (req, res);
 
+});
+
+
+router.post('/register', function (req, res) {
+
+    model.user.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        phonenumber: req.body.phonenumber,
+        address: req.body.address
+    }).complete(function(err, user){
+        if(err){
+          return  res.send(err)
+        } else {
+          return  res.send(user)
+        }
+    }) 
+
+    (req, res);
 });
 
 

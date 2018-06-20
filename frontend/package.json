@@ -20,6 +20,7 @@
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-bootstrap": "^0.32.1",
+    "react-classlist-helper": "^1.4.0",
     "react-custom-scrollbars": "^4.1.1",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.3.1",
